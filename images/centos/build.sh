@@ -3,5 +3,8 @@
 for i in $(ls -d centos-8_k8s*/); do
  name=${i%%/};
  echo $name
- tar -h -czvf $name.tar.gz -C $name .
+ cd $name
+ tar -h -czvf $name.tar.gz *
+ mv $name.tar.gz ../
+ cd -
 done
