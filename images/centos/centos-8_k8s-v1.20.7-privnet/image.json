@@ -18,7 +18,7 @@
             "snapshot_name": "capi-hcloud-{{user `os`}}-{{isotime \"2006-01-02-030405\"}}",
             "snapshot_labels": {
                 "cluster-api-provider-hcloud.capihc.com/image-name": "{{user `image-name`}}",
-                "cluster-api-provider-hcloud.capihc.com/kubernetes-version": "v1.19.11",
+                "cluster-api-provider-hcloud.capihc.com/kubernetes-version": "v1.20.7",
                 "cluster-api-provider-hcloud.capihc.com/template-hash": "{{user `template_hash`}}"
             }
         }
