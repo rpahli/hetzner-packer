@@ -20,7 +20,7 @@ Wants=network-online.target
 After=network-online.target
 
 [Service]
-ExecStart=/bin/sh -c 'nmcli connection down "System eth0" && sed -i -e '/^ONBOOT/s/^.*$/ONBOOT=false/' /etc/sysconfig/network-scripts/ifcfg-eth0 '
+ExecStart=/bin/sh -c 'nmcli connection down "System eth0" && sed -i -e '/^ONBOOT/s/^.*$/ONBOOT=false/' /etc/sysconfig/network-scripts/ifcfg-eth0 && ip route add default via 10.0.0.1 dev ens10'
 
 [Install]
 WantedBy=multi-user.target
