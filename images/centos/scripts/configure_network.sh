@@ -33,7 +33,7 @@ ONBOOT=yes
 DEFROUTE=yes
 EOF
 
-cat > /etc/sysconfig/network-scripts/ifcfg-ens10 <<EOF
+cat > /etc/sysconfig/network-scripts/route-ens10 <<EOF
 10.0.0.1/32 via 0.0.0.0 dev ens10 scope link
 10.0.0.0/8 via 10.0.0.1 dev ens10
 EOF
