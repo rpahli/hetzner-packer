@@ -36,6 +36,12 @@ while [ $? -ne 0 ]; do
 done
 EOF
 
+cat > /etc/sysconfig/network-scripts/ifcfg-ens10 <<EOF
+DEVICE=ens10
+BOOTPROTO=dhcp
+ONBOOT=yes
+EOF
+
 chmod +x /usr/bin/setup_gateway.sh
 
 cat > /etc/systemd/system/setup-default-gateway.service <<EOF
