@@ -3,7 +3,6 @@
 set -o errexit
 set -o nounset
 set -o pipefail
-
 # localectl set-locale LANGUAGE=en_US.UTF-9
 
 # install hetzner cloud networks configuration package
@@ -32,6 +31,16 @@ DEVICE=ens10
 BOOTPROTO=dhcp
 ONBOOT=yes
 DEFROUTE=yes
+EOF
+
+#cat > /etc/sysconfig/network-scripts/ifcfg-ens10 <<EOF
+#gateway.of.the.network/32 via 0.0.0.0 dev ens10 scope link
+#net.work.ip.range via gateway.of.the.network dev ens10
+#EOF
+
+cat > /etc/cloud/cloud.cfg.d/98-disable-network.cfg <<EOF
+network:
+  config: disabled
 EOF
 
 systemctl enable disable-public-interface.service
