@@ -4,8 +4,6 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-# Set locale
-localectl set-locale LANG=en_US.UTF-8 
 # localectl set-locale LANGUAGE=en_US.UTF-9
 
 # install hetzner cloud networks configuration package
@@ -20,42 +18,20 @@ Wants=network-online.target
 After=network-online.target
 
 [Service]
-ExecStart=/bin/sh -c 'nmcli connection down "System eth0" && sed -i -e '/^ONBOOT/s/^.*$/ONBOOT=false/' /etc/sysconfig/network-scripts/ifcfg-eth0'
+ExecStart=/bin/sh -c 'nmcli connection down "System eth0"'
 
 [Install]
 WantedBy=multi-user.target
 EOF
 
-cat > /usr/bin/setup_gateway.sh <<EOF
-#!/bin/sh
-
-ip route add default via 10.0.0.1 dev ens10
-
-while [ $? -ne 0 ]; do
-    ip route add default via 10.0.0.1 dev ens10
-done
-EOF
+sed -i -e '/^ONBOOT/s/^.*$/ONBOOT=false/' /etc/sysconfig/network-scripts/ifcfg-eth0
+sed -i -e '/^DEFROUTE/s/^.*$/DEFROUTE=false/' /etc/sysconfig/network-scripts/ifcfg-eth0
 
 cat > /etc/sysconfig/network-scripts/ifcfg-ens10 <<EOF
 DEVICE=ens10
 BOOTPROTO=dhcp
 ONBOOT=yes
-EOF
-
-chmod +x /usr/bin/setup_gateway.sh
-
-cat > /etc/systemd/system/setup-default-gateway.service <<EOF
-[Unit]
-Description=Disable Public Interface
-Wants=network-online.target
-After=network-online.target
-
-[Service]
-ExecStart=/bin/sh -c '/usr/bin/setup_gateway.sh'
-
-[Install]
-WantedBy=multi-user.target
+DEFROUTE=yes
 EOF
 
 systemctl enable disable-public-interface.service
-systemctl enable setup-default-gateway.service
