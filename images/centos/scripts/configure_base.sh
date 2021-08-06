@@ -6,7 +6,7 @@ set -o pipefail
 
 # Set locale
 localectl set-locale LANG=en_US.UTF-8 
-localectl set-locale LANGUAGE=en_US.UTF-9
+# localectl set-locale LANGUAGE=en_US.UTF-9
 
 # Ensure that the correct repos are installed
 cat > /etc/yum.repos.d/CentOS-Base.repo <<EOF
