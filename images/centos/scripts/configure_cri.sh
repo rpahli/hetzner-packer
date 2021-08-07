@@ -72,6 +72,7 @@ perl -i -0pe 's#plugin_dirs\s*=\s*\[[^\]]*\]#plugin_dirs = [\n  "/opt/cni/bin",\
 
 wget https://github.com/mikefarah/yq/releases/download/v4.11.2/yq_linux_amd64.tar.gz
 tar zxvf yq_linux_amd64.tar.gz -C /usr/local/bin
+mv /usr/local/bin/yq_linux_amd64 /usr/local/bin/yq
 rm -f yq_linux_amd64.tar.gz
 
 # enable systemd service after next boot
