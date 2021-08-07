@@ -44,7 +44,7 @@ cat > /etc/sysconfig/network-scripts/route-ens10 <<EOF
 10.0.0.0/8 via 10.0.0.1 dev ens10
 EOF
 
-cat > /etc/cloud/cloud.cfg.d/98-disable-network.cfg <<EOF
+cat > /etc/cloud/cloud.cfg.d/99-disable-network.cfg <<EOF
 network:
   config: disabled
 EOF
