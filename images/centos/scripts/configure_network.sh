@@ -8,3 +8,10 @@ set -o pipefail
 # install hetzner cloud networks configuration package
 curl https://packages.hetzner.com/hcloud/rpm/hc-utils-0.0.3-1.el8.noarch.rpm -o /tmp/hc-utils-0.0.3-1.el8.noarch.rpm -s
 dnf -y install /tmp/hc-utils-0.0.3-1.el8.noarch.rpm
+
+cat > /etc/sysconfig/network-scripts/ifcfg-ens10 <<EOF
+DEVICE=ens10
+BOOTPROTO=dhcp
+ONBOOT=yes
+DEFROUTE=yes
+EOF
