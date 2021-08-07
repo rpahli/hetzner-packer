@@ -90,5 +90,3 @@ systemctl enable sys-fs-bpf.mount
 # Set SELinux in enforcing mode (effectively disabling it)
 setenforce 1
 sed -i 's/^SELINUX=permissive\$/SELINUX=enforcing/' /etc/selinux/config
-
-wget https://github.com/mikefarah/yq/releases/download/v4.11.2/yq_linux_amd64.tar.gz -O - | tar xz && mv yq_linux_amd64 /usr/bin/yq

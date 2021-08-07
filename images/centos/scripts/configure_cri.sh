@@ -70,6 +70,9 @@ rm -f /etc/cni/net.d/100-crio-bridge.conf /etc/cni/net.d/200-loopback.conf
 # add default cni directory the config
 perl -i -0pe 's#plugin_dirs\s*=\s*\[[^\]]*\]#plugin_dirs = [\n  "/opt/cni/bin",\n  "/usr/libexec/cni"\n]#g' /etc/crio/crio.conf
 
+wget https://github.com/mikefarah/yq/releases/download/v4.11.2/yq_linux_amd64.tar.gz
+tar zxvf yq_linux_amd64.tar.gz -C /usr/local/bin
+rm -f yq_linux_amd64.tar.gz
 
 # enable systemd service after next boot
 systemctl enable crio.service
