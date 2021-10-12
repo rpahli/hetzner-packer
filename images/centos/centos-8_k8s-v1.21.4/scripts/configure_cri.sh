@@ -45,8 +45,11 @@ go get github.com/cpuguy83/go-md2man
 
 # install cri-o
 
-curl https://raw.githubusercontent.com/cri-o/cri-o/main/scripts/get | bash -s -- -t $CRIO -a amd64
-rm -f cri-o.amd64.$CRIO.tar.gz
+wget https://storage.googleapis.com/k8s-conform-cri-o/artifacts/cri-o.amd64.ff0b7feb8e12509076b4b0e338b6334ce466b293.tar.gz
+tar zxvf cri-o.amd64.ff0b7feb8e12509076b4b0e338b6334ce466b293.tar.gz -C /tmp/
+cd /tmp/cri-o/ && ./install && cd -
+rm -f cri-o.amd64.ff0b7feb8e12509076b4b0e338b6334ce466b293.tar.gz
+rm -fr /tmp/cri-o
 
 # cri-tool https://github.com/kubernetes-sigs/cri-tools
 # Install crictl
