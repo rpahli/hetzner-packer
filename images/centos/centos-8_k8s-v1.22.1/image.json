@@ -27,13 +27,11 @@
       {
         "type": "shell",
         "environment_vars": [
-          "PACKER_CENTOS_RELEASE=8.2.2004",
+          "PACKER_CENTOS_RELEASE=8.5.2111",
           "PACKER_OS_IMAGE={{user `os`}}",
-          "RUNC=v1.0.2",
-          "CONMON=v2.0.29",
-          "CRIO=v1.22.0",
+          "CRIO=v1.22.1",
           "CRI_TOOLS=v1.22.0",
-          "KUBERNETES_VERSION=1.22.1"
+          "KUBERNETES_VERSION=1.22.6"
         ],
         "scripts": [
           "{{user `scripts`}}/configure_base.sh",

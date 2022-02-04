@@ -27,7 +27,7 @@
       {
         "type": "shell",
         "environment_vars": [
-          "PACKER_CENTOS_RELEASE=8.2.2004",
+          "PACKER_CENTOS_RELEASE=8.5.2111",
           "PACKER_OS_IMAGE={{user `os`}}",
           "RUNC=v1.0.2",
           "CONMON=v2.0.29",
